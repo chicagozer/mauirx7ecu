@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiRX7", "sampleCode\MauiRX7.csproj", "{1C376DAF-3809-446B-996B-371DBB2A563A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiRX7", "MauiRX7ECU\MauiRX7.csproj", "{1C376DAF-3809-446B-996B-371DBB2A563A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpRX7ECU", "DumpRX7ECU\DumpRX7ECU.csproj", "{C83DF383-48DF-4E0A-B4AA-7430F3AE1450}"
 EndProject
