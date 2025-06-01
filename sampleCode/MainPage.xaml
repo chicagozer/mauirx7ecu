@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiRX7"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             x:Class="MauiRX7.MainPage"
+             x:DataType="local:ParameterRepository"
+             NavigationPage.HasNavigationBar="False">
+
+    <!--
+    <ContentPage.BindingContext>
+        <local:ParameterRepository x:Name="ViewModel"/>
+    </ContentPage.BindingContext>
+    -->
+
+    <Grid RowDefinitions="50,*">
+
+        <FlexLayout  
+                     VerticalOptions="Center">
+
+            <Label IsVisible="{OnPlatform Default=false, MacCatalyst=true}" Text="Select Port:" Padding="2"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
+
+            <Picker x:Name="PortPicker"
+                    WidthRequest="300"
+                    
+                    SelectedIndexChanged="OnPickerSelectedIndexChanged"
+                    Title="{OnPlatform iOS='Select a port',
+                       Android='Select a port',
+                       WinUI='Select a port'}"/>
+
+            <Label Text="ECU ID:" Padding="2"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
+            <Label Text="{Binding ECUId}"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
+                   <Label Padding="10" Text="Simulator?"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
+                   <CheckBox x:Name="simulatorCheckBox" CheckedChanged="OnCheckBoxCheckedChanged"/>
+        </FlexLayout>
+
+
+        <syncfusion:SfDataGrid x:Name="dataGrid"
+                               Grid.Row="1"
+                               LiveDataUpdateMode="AllowDataShaping"
+                               ColumnWidthMode="Auto"
+                               ItemsSource="{Binding ParameterCollection}">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridTextColumn MappingName="Name"
+                                               HeaderText="Name"/>
+                <syncfusion:DataGridCheckBoxColumn HeaderText="Enabled"
+                                                   MappingName="Enabled"/>
+                <syncfusion:DataGridTextColumn HeaderText="Units"
+                                               MappingName="Units"/>
+                <syncfusion:DataGridNumericColumn HeaderText="Value"
+                                                  MappingName="DataValue.Value"/>
+                <syncfusion:DataGridNumericColumn HeaderText="Last Updated"
+                                                  MappingName="DataValue.LastUpdated"
+                                                  Format="0"/>
+                <syncfusion:DataGridTextColumn HeaderText="DataValue"
+                                               MappingName="DataValue"
+                                               Visible="False"/>
+
+                <syncfusion:DataGridTextColumn HeaderText="GaugeInfo"
+                                               MappingName="GaugeInfo"
+                                               Visible="False"/>
+            </syncfusion:SfDataGrid.Columns>
+            <syncfusion:SfDataGrid.SortColumnDescriptions>
+                <syncfusion:SortColumnDescription ColumnName="Enabled"
+                                                  SortDirection="Descending"/>
+                <syncfusion:SortColumnDescription ColumnName="Name"
+                                                  SortDirection="Ascending"/>
+            </syncfusion:SfDataGrid.SortColumnDescriptions>
+        </syncfusion:SfDataGrid>
+    </Grid>
+
+</ContentPage>
