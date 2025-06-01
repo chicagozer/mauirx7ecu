@@ -9,6 +9,7 @@
 		<RootNamespace>MauiRX7</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
+		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
