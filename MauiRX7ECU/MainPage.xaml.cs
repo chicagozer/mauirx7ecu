@@ -2,8 +2,38 @@
 using System.ComponentModel;
 using RX7Interface;
 using System.Diagnostics;
+using System.Globalization;
+using Microsoft.Maui.Controls; // Add this for IValueConverter
+
 namespace MauiRX7
 {
+    public class ParameterDisplayValueConverter : IValueConverter
+    {
+        public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            Parameter? p = value as Parameter;
+            if (p == null || p.DataValue == null || p.DataValue.Value == null)
+            {
+                return "";
+            }
+           
+            switch (p?.Units)
+            {
+                case "Hex":
+                    return "0x" + ((int)(p.DataValue.Value)).ToString("X4");
+               
+                default:
+                    return p.DataValue.Value.ToString("F2");
+            }
+        }
+
+
+
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public partial class MainPage : ContentPage
     {
         private ParameterRepository viewModel = new ParameterRepository();

@@ -87,12 +87,26 @@ namespace RX7Interface
             this.offset = offset;
         }
 
+
+        public String Raw
+        {
+            get
+            {
+                if (rawValues.Length == 0)
+                {
+                    return "0X00";
+                }
+                return "0X" + Convert.ToHexString(rawValues);
+            }
+        }
+
         public void SetRawValue(uint address, byte value)
         {
             rawValues[address - baseAddress] = value;
+            OnPropertyChanged(nameof(Raw));
             OnPropertyChanged(nameof(Value));
         }
-        public double Value
+        public Double Value
         {
             get
             {
@@ -104,21 +118,10 @@ namespace RX7Interface
                     rawValue += b;
                 }
 
-                return ((double)rawValue * conversion) + offset;
+                return ((Double)rawValue * conversion) + offset;
             }
 
         }
-        /*        public double GetValue()
-                {
-                    ulong rawValue = 0;
 
-                    foreach (byte b in rawValues)
-                    {
-                        rawValue <<= 8;
-                        rawValue += b;
-                    }
-
-                    return ((double)rawValue * conversion) + offset;
-                }*/
     }
 }
