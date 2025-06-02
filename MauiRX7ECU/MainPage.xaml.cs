@@ -12,12 +12,12 @@ namespace MauiRX7
         public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             Parameter? p = value as Parameter;
-            if (p == null || p.DataValue == null || p.DataValue.Value == null)
+            if (p == null || p.DataValue == null )
             {
                 return "";
             }
            
-            switch (p?.Units)
+            switch (p.Units)
             {
                 case "Hex":
                     return "0x" + ((int)(p.DataValue.Value)).ToString("X4");
