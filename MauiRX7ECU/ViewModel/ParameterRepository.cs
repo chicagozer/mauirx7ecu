@@ -85,6 +85,8 @@ namespace MauiRX7
             parameter.Add(new Parameter("Unknown 9", "?", new DataValue(0x0812, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Unknown 9", true)));
             parameter.Add(new Parameter("Unknown 10", "?", new DataValue(0x0813, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Unknown 10", true)));
 
+            parameter.Add(new Parameter("Diag 1", "Hex", new DataValue(0x0010, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 1", true)));
+
             foreach (Parameter p in parameter)
             {
                 p.PropertyChanged += OnEnabledChanged;
