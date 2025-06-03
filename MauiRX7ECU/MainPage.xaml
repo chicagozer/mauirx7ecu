@@ -97,7 +97,7 @@
                 <syncfusion:DataGridTextColumn HeaderText="Units"
                                                MappingName="Units"/>
                 <syncfusion:DataGridNumericColumn HeaderText="Value"
-                     Format="X"
+                   Format = "0.##"
                                                   MappingName="DataValue.Value"/>
             <syncfusion:DataGridTextColumn HeaderText="Raw"
                                                MappingName="DataValue.Raw"  />
