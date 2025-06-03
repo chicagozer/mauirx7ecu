@@ -10,7 +10,7 @@ namespace RX7Interface
         private Random random;
 
         // Read time in ms.
-        private const int ReadTime = 200;
+        private const int ReadTime = 100;
 
         public DummyDataStream()
         {
@@ -81,7 +81,7 @@ namespace RX7Interface
                  new Parameter("Turbo Pre-Control", "%", 0x0809, ParameterLength.OneByte, 100d/256),
                  new Parameter("Wastegate Control", "%", 0x080a, ParameterLength.OneByte, 100d/256),*/
 
-            Thread.Sleep(400);
+            Thread.Sleep(ReadTime);
             switch (address)
             {
                 default:

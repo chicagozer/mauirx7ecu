@@ -136,6 +136,7 @@ namespace MauiRX7
                                     p.DataValue.SetRawValue(address, received);
                                     p.DataValue.UpdateTime = DateTime.Now;
                                 }
+                                Thread.Sleep(100);
 
 
                             }

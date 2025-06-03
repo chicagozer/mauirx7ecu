@@ -21,6 +21,18 @@ namespace MauiRX7
     }
     public class ParameterRepository : INotifyPropertyChanged
     {
+        private Timer timer;
+
+        private void TimerCallback(object? stateInfo)
+        {
+            foreach (Parameter p in parameter)
+            {
+                if (p.Enabled)
+                {
+                    p.DataValue.OnPropertyChanged(nameof(p.DataValue.LastUpdated));
+                }
+            }
+        }
         public event PropertyChangedEventHandler? PropertyChanged;
         private string ecuId = "UNKNOWN";
         public string ECUId
@@ -43,6 +55,7 @@ namespace MauiRX7
         {
             parameter = new ObservableCollection<Parameter>();
             this.GenerateParameters();
+              timer = new Timer(TimerCallback, null, 1000, 500);
         }
 
         private void OnEnabledChanged(object? sender, PropertyChangedEventArgs e)
@@ -86,6 +99,13 @@ namespace MauiRX7
             parameter.Add(new Parameter("Unknown 10", "?", new DataValue(0x0813, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Unknown 10", true)));
 
             parameter.Add(new Parameter("Diag 1", "Hex", new DataValue(0x0010, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 1", true)));
+            parameter.Add(new Parameter("Diag 2", "Hex", new DataValue(0x0012, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 2", true)));
+            parameter.Add(new Parameter("Diag 3", "Hex", new DataValue(0x0014, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 3", true)));
+            parameter.Add(new Parameter("Diag 4", "Hex", new DataValue(0x0016, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 4", true)));
+            parameter.Add(new Parameter("Diag 5", "Hex", new DataValue(0x0018, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 5", true)));
+            parameter.Add(new Parameter("Diag 6", "Hex", new DataValue(0x001a, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 6", true)));
+            parameter.Add(new Parameter("Diag 7", "Hex", new DataValue(0x001c, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 7", true)));
+            parameter.Add(new Parameter("Diag 8", "Hex", new DataValue(0x001e, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 8", true)));
 
             foreach (Parameter p in parameter)
             {
