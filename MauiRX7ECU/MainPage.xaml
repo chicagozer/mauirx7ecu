@@ -56,7 +56,9 @@
                 <syncfusion:DataGridTextColumn HeaderText="Units"
                                                MappingName="Units"/>
                 <syncfusion:DataGridNumericColumn HeaderText="Value"
+                     Format="X"
                                                   MappingName="DataValue.Value"/>
+                                                  
                 <syncfusion:DataGridNumericColumn HeaderText="Last Updated"
                                                   MappingName="DataValue.LastUpdated"
                                                   Format="0"/>
