@@ -107,6 +107,15 @@ namespace MauiRX7
             parameter.Add(new Parameter("Diag 7", "Hex", new DataValue(0x001c, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 7", true)));
             parameter.Add(new Parameter("Diag 8", "Hex", new DataValue(0x001e, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 8", true)));
 
+            parameter.Add(new Parameter("Diag 01", "Hex", new DataValue(0x0000, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 1", true)));
+            parameter.Add(new Parameter("Diag 02", "Hex", new DataValue(0x0002, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 2", true)));
+            parameter.Add(new Parameter("Diag 03", "Hex", new DataValue(0x0004, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 3", true)));
+            parameter.Add(new Parameter("Diag 04", "Hex", new DataValue(0x0006, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 4", true)));
+            parameter.Add(new Parameter("Diag 05", "Hex", new DataValue(0x0008, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 5", true)));
+            parameter.Add(new Parameter("Diag 06", "Hex", new DataValue(0x000a, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 6", true)));
+            parameter.Add(new Parameter("Diag 07", "Hex", new DataValue(0x000c, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 7", true)));
+            parameter.Add(new Parameter("Diag 08", "Hex", new DataValue(0x000e, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 8", true)));
+
             foreach (Parameter p in parameter)
             {
                 p.PropertyChanged += OnEnabledChanged;

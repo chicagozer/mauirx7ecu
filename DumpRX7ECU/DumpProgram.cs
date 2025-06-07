@@ -102,40 +102,40 @@ namespace RX7Interface
             Console.WriteLine("Worker: Done now!");
         }
 
-        public static void PrintColoredHexDiff(string hexStr1, string hexStr2)
-    {
-        string[] hexBytes1 = hexStr1.Split(' ');
-        string[] hexBytes2 = hexStr2.Split(' ');
-
-        int minLength = Math.Min(hexBytes1.Length, hexBytes2.Length);
-
-        for (int i = 0; i < minLength; i++)
+        public static void PrintColoredHexDiff(string hexStr1, string hexStr2, System.ConsoleColor color)
         {
-            if (hexBytes1[i] != hexBytes2[i])
+            string[] hexBytes1 = hexStr1.Split(' ');
+            string[] hexBytes2 = hexStr2.Split(' ');
+
+            int minLength = Math.Min(hexBytes1.Length, hexBytes2.Length);
+
+            for (int i = 0; i < minLength; i++)
+            {
+                if (hexBytes1[i] != hexBytes2[i])
+                {
+                    Console.ForegroundColor = color;
+                    Console.Write(hexBytes2[i] + " ");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.Write(hexBytes2[i] + " ");
+                }
+            }
+
+            // Print remaining hex bytes of the longer string with red color.
+            if (hexBytes2.Length > minLength)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(hexBytes2[i] + " ");
+                for (int i = minLength; i < hexBytes2.Length; i++)
+                {
+                    Console.Write(hexBytes2[i] + " ");
+                }
                 Console.ResetColor();
             }
-            else
-            {
-                Console.Write(hexBytes2[i] + " ");
-            }
-        }
 
-         // Print remaining hex bytes of the longer string with red color.
-        if (hexBytes2.Length > minLength)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            for(int i = minLength; i < hexBytes2.Length; i++)
-            {
-                Console.Write(hexBytes2[i] + " ");
-            }
-            Console.ResetColor();
+            Console.WriteLine();
         }
-
-        Console.WriteLine();
-    }
         static void worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             BackgroundWorker? worker = sender as BackgroundWorker;
@@ -143,13 +143,13 @@ namespace RX7Interface
             IDataStream dataStream = (IDataStream)e.Argument!;
 
             Console.WriteLine("ECU ID: {0}", dataStream.ReadECUId());
-            String[] lastRead = new String[8];
-
+            String[] lastRead = new String[96];
+            //string[] lastSaved = File.ReadAllLines("saved.txt");
 
             while (!e.Cancel)
             {
                 int index = 0;
-                for (uint address = 0x0000; address < 0x0040; address += 16)
+                for (uint address = 0x0100; address < 0x0200; address += 16)
                 {
 
                     byte[] data = dataStream.DumpBytes(address, 16);
@@ -160,11 +160,31 @@ namespace RX7Interface
                     }
                     Console.Write("Address {0:X4}: ", address);
                     String latest = BitConverter.ToString(data).Replace("-", " ");
-                    PrintColoredHexDiff(lastRead[index] ?? "", latest);
+                    PrintColoredHexDiff(lastRead[index] ?? "", latest, ConsoleColor.Red);
+                    //Console.Write("Address {0:X4}: ", address);
+                    //PrintColoredHexDiff(lastSaved[index] ?? "", latest, ConsoleColor.Green);
                     lastRead[index] = latest;
                     index++;
                 }
-                for (uint address = 0x0800; address < 0x0840; address += 16)
+                for (uint address = 0x0800; address < 0x0800; address += 16)
+                {
+                    byte[] data = dataStream.DumpBytes(address, 16);
+                    if (data.Length == 0)
+                    {
+                        Console.WriteLine("Dump failed at address {0:X4}", address);
+                        break;
+                    }
+                    Console.Write("Address {0:X4}: ", address);
+                    String latest = BitConverter.ToString(data).Replace("-", " ");
+                    PrintColoredHexDiff(lastRead[index] ?? "", latest, ConsoleColor.Red);
+                    //Console.Write("Address {0:X4}: ", address);
+                    //PrintColoredHexDiff(lastSaved[index] ?? "", latest, ConsoleColor.Green);
+                    lastRead[index] = latest;
+                    index++;
+                }
+
+      /*          List<uint> singles = [0x0880, 0x09A0, 0x0A30];
+                foreach (uint address in singles)
                 {
                     byte[] data = dataStream.DumpBytes(address, 16);
                     if (data.Length == 0)
@@ -176,11 +196,10 @@ namespace RX7Interface
                     String latest = BitConverter.ToString(data).Replace("-", " ");
                     PrintColoredHexDiff(lastRead[index] ?? "", latest);
                     lastRead[index] = latest;
-                    index++;
-                }
-
+                     index++;
+                }*/
                 Console.WriteLine("-----------------------");
-
+                //File.WriteAllLines("saved.txt", lastRead);
 
                 Thread.Sleep(1000);
 
