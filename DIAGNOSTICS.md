@@ -36,14 +36,14 @@ On the test bench here are the codes thrown.
 - 27 metering oil pump (NOT THROWN)
 - 28 solenoid EGR 4O (NOT THROWN)
 - 30 sol split air bypass 0b00000010 @ 0x109
-- 31 sol relief 1 sec air bypass 3P
+- 31 sol relief 1 sec air bypass 3P 0b00001000 @109
 - 32 sol second air switching 4N 0b00000100 @ 0x109 
 - 33 sol valve port air bypass 3N (NOT THROWN)
-- 34 sol idle speed ctl 4Q
+- 34 sol idle speed ctl 4Q 0b00000010 @0x10d
 - 37 oil metering pump (NOT THROWN)
 - 38 sol accel warm up AWS 0b00000001 @0x109 4P
-- 39 sol relief 2 3K      
-- 40 sol purge 3H
+- 39 sol relief 2 3K  0b10000000 @0x10b   
+- 40 sol purge 3H 0b01000000 @0x10b
 - 42 sol precontrol 4V (NOT THROWN)
 - 43 sol waste gate 4U (NOT THROWN)
 - 44 sol turbo  0b00001000 @ 0x10b 4R
