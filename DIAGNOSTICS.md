@@ -1,15 +1,19 @@
-Here are the diagnostic codes and the memory locations.
+## Summary
 
-Each diagnostic code is a bit in 0x101, 0x103, 0x105, 0x107, 0x109, 0x10b, 0x10d 0x10f
+Here are the diagnostic codes and the memory locations. Each diagnostic code is a bit in  
+
+0x101, 0x103, 0x105, 0x107, 0x109, 0x10b, 0x10d 0x10f
 
 the subsequent byte is the complement of the previous byte.
 
-Baseline on my car with no codes.
+## Baseline
 
-N3A1-MP*
+My car with no codes. (N3A1-MP*)  
 
 Address 0100: 5A 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00  
 Address 0110: FF 80 00 80 00 80 00 80 00 7F FF 7F FF 7F FF 7F  
+
+## Test Bench ECU
 
 On the test bench here are the codes thrown.  
 
