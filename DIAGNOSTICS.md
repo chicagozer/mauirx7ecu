@@ -44,11 +44,11 @@ On the test bench here are the codes thrown.
 - 38 sol accel warm up AWS 0b00000001 @0x109 4P
 - 39 sol relief 2 3K  0b10000000 @0x10b   
 - 40 sol purge 3H 0b01000000 @0x10b
-- 42 sol precontrol 4V (NOT THROWN)
-- 43 sol waste gate 4U (NOT THROWN)
+- 42 sol precontrol 4V (NOT THROWN) 0b00100000 @0x10b ?? GUESS
+- 43 sol waste gate 4U (NOT THROWN) 0b00010000 @0x10b ?? GUESS
 - 44 sol turbo  0b00001000 @ 0x10b 4R
 - 45 sol charge ctl 0b00000100  0x10b 4T
-- 46 sol chare relief 4S (NOT THROWN)
+- 46 sol chare relief 4S (NOT THROWN) 0b00000010 @0x10b ?? GUESS
 - 50 double throttle 3O (NOT THROWN)
 - 51 fuel resistor relay resistance?? to B+ 200ohm
 - 54 air pump relay 2J - to ground resistance??
