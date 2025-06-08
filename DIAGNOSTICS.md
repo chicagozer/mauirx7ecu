@@ -22,13 +22,13 @@ On the test bench here are the codes thrown.
 - 05 knock sensor - 1m ohm  0b00100000 @ 0x101 3M 
 - 09 water therm 1k resistor - pot 3E to ground  0b00010000 @ 0x103
 - 11 intake air 1k resistor - pot 3L to ground 0b10000000 @ 0x105
-- 12 throttle full .1-.7v  -  VREF 3I### 1K
+- 12 throttle full .1-.7v  -  VREF 3I 3G 1K ohm 0b00100000 @ 0x103
 - 13 pressure sensor VREF 3I + 1O
 - 14 in ECU pressure (NOT THROWN)
 - 15 O2 sensor - inactive (NOT THROWN) 3C
 - 16 EGR sensor 3J-4D (NOT THROWN)
 - 17 O2 sensor inverted (NOT THROWN)
-- 18 throttle narrow  .75-1.25v VREF +  1K
+- 18 throttle narrow  .75-1.25v VREF 3F +  1K ohm 0b01000000 @ 0x103
 - 20 Metering pump position sensor 3I 3A 4D (NOT THROWN)
 - 23 fuel therm - 1k resistor - pot 1U 0b01000000 @ 0x105
 - 25 sol valv pressure reg 4M  0b10000000 @ 0x109
