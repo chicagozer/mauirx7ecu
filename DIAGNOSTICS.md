@@ -23,7 +23,7 @@ On the test bench here are the codes thrown.
 - 09 water therm 1k resistor - pot 3E to ground  0b00010000 @ 0x103
 - 11 intake air 1k resistor - pot 3L to ground 0b10000000 @ 0x105
 - 12 throttle full .1-.7v  -  VREF 3I 3G 1K ohm 0b00100000 @ 0x103
-- 13 pressure sensor VREF 3I + 1O
+- 13 pressure sensor VREF 3I + 1O 0b10000000 @ 0x103
 - 14 in ECU pressure (NOT THROWN)
 - 15 O2 sensor - inactive (NOT THROWN) 3C
 - 16 EGR sensor 3J-4D (NOT THROWN)
@@ -50,8 +50,8 @@ On the test bench here are the codes thrown.
 - 45 sol charge ctl 0b00000100  0x10b 4T
 - 46 sol chare relief 4S (NOT THROWN) 0b00000010 @0x10b ?? GUESS
 - 50 double throttle 3O (NOT THROWN)
-- 51 fuel resistor relay resistance?? to B+ 200ohm
-- 54 air pump relay 2J - to ground resistance??
+- 51 fuel resistor relay resistance?? 1k to B+ 200ohm 0b01000000 @0x10d
+- 54 air pump relay 2J - to b+ resistance??
 - 71 injector front sec B+ 14ohm? try bigger 4X
 - 73 inj rear sec B+ 14ohm? try bigger 4Z
 - 76 slip lokup off signal (NOT THROWN) 2D 2C 2G
