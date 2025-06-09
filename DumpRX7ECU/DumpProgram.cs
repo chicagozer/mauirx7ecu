@@ -149,7 +149,7 @@ namespace RX7Interface
             while (!e.Cancel)
             {
                 int index = 0;
-                for (uint address = 0x0100; address < 0x0200; address += 16)
+                for (uint address = 0x0100; address < 0x0120; address += 16)
                 {
 
                     byte[] data = dataStream.DumpBytes(address, 16);
