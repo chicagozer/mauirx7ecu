@@ -32,7 +32,7 @@ On the test bench here are the codes thrown.
 - 20 Metering pump position sensor 3I 3A 4D (NOT THROWN)
 - 23 fuel therm - 1k resistor - pot 1U 0b01000000 @ 0x105
 - 25 sol valv pressure reg 4M  0b10000000 @ 0x109
-- 26 oil metering stepper B+ 22k resistor 4I 4J 4K 4L
+- 26 oil metering stepper B+ 22k resistor 4I 4J 4K 4L 01000000 @ 0x109
 - 27 metering oil pump (NOT THROWN)
 - 28 solenoid EGR 4O (NOT THROWN)
 - 30 sol split air bypass 0b00000010 @ 0x109
