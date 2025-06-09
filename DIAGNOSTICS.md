@@ -51,8 +51,12 @@ On the test bench here are the codes thrown.
 - 46 sol chare relief 4S (NOT THROWN) 0b00000010 @0x10b ?? GUESS
 - 50 double throttle 3O (NOT THROWN)
 - 51 fuel resistor relay resistance?? 1k to B+ 200ohm 0b01000000 @0x10d
-- 54 air pump relay 2J - to b+ resistance??
-- 71 injector front sec B+ 14ohm? try bigger 4X
-- 73 inj rear sec B+ 14ohm? try bigger 4Z
+- 54 air pump relay 2J - to b+ 80ohm 0b00100000 @0x10d
+- 71 injector front sec B+ 22ohm 2w  4X 0b10000000 @0x10f
+- 73 inj rear sec B+ 14ohm? try bigger 4Z 0b01000000 @0x10f
 - 76 slip lokup off signal (NOT THROWN) 2D 2C 2G
 - 77 torque reduced signal (NOT THROWN) 2D 2C 2G
+
+
+22 bits  
+
