@@ -2,9 +2,13 @@
 
 Here are the diagnostic codes and the memory locations. Each diagnostic code is a bit in  
 
-0x101, 0x103, 0x105, 0x107, 0x109, 0x10b, 0x10d 0x10f
+0x101, 0x103, 0x105, 0x107, 0x109, 0x10b, 0x10d and 0x10f
 
-the subsequent byte is the complement of the previous byte.
+the subsequent byte is the complement of the previous byte.  
+
+Maybe theres a better way to get these, but the ReadByte command works. I could not recognize an obvious pattern of bits to the diagnostic code number.
+
+There are a few codes that are not thrown by the test ECU. The EGR code is CA only and the others likely need the car to be running. TBD to determine the bits for these codes.
 
 ## Baseline
 
@@ -15,7 +19,7 @@ Address 0110: FF 80 00 80 00 80 00 80 00 7F FF 7F FF 7F FF 7F
 
 ## Test Bench ECU
 
-On the test bench here are the codes thrown.  
+On the test bench ECU here are the codes thrown.  
 
 - 02 crank position sensor NE (NOT THROWN) 4E 4H
 - 03 Crank position sensor G (NOT THROWN) 4G 4H
@@ -53,10 +57,7 @@ On the test bench here are the codes thrown.
 - 51 fuel resistor relay resistance?? 1k to B+ 200ohm 0b01000000 @0x10d
 - 54 air pump relay 2J - to b+ 80ohm 0b00100000 @0x10d
 - 71 injector front sec B+ 22ohm 2w  4X 0b10000000 @0x10f
-- 73 inj rear sec B+ 14ohm? try bigger 4Z 0b01000000 @0x10f
+- 73 inj rear sec B+ 22ohm 2w try bigger 4Z 0b01000000 @0x10f
 - 76 slip lokup off signal (NOT THROWN) 2D 2C 2G
 - 77 torque reduced signal (NOT THROWN) 2D 2C 2G
-
-
-22 bits  
 
