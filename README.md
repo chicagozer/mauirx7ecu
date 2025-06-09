@@ -33,17 +33,19 @@ I have not found a good connector for the diagnostic port. The Mazda 17 pin to O
 
 I updated the original code to Maui. It seems to run fine on either Windows or Mac but unfortunately won't run on an iphone or android because the serial comms are not supported.
 
+## Diagnostic Codes
+
+See https://github.com/chicagozer/mauirx7ecu/blob/main/DIAGNOSTICS.md
+
 ## TODO
 
-Ideally I'd like to display the CEL diagnostic codes. This is available through the blinking light procedure but I have to think these codes are available through the serial communications.
-
-
+I've decoded most of the diagnostic codes. Still need to incorporate into the GUI.
 
 ## Resources
 
-ECU pinouts - https://stocksray.com/ecupins.html
-Temperature Sensor - https://kaele-com.translate.goog/~kashima/car/tempmeter/?_x_tr_sch=http&_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en
-Original Schematic - https://kaele.com/~kashima/car/MAZDA_IF.pdf?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en&_x_tr_sch=http
-ECU Commands - https://kaele-com.translate.goog/~kashima/car/rx7.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp#read
-Data sheet for 68HC11 - https://www.nxp.com/docs/en/data-sheet/M68HC11E.pdf
-Error Codes - https://www.banzai-racing.com/FD&S5_error_codes.htm
+ECU pinouts - https://stocksray.com/ecupins.html  
+Temperature Sensor - https://kaele-com.translate.goog/~kashima/car/tempmeter/?_x_tr_sch=http&_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en  
+Original Schematic - https://kaele.com/~kashima/car/MAZDA_IF.pdf?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en&_x_tr_sch=http  
+ECU Commands - https://kaele-com.translate.goog/~kashima/car/rx7.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp#read  
+Data sheet for 68HC11 - https://www.nxp.com/docs/en/data-sheet/M68HC11E.pdf  
+Error Codes - https://www.banzai-racing.com/FD&S5_error_codes.htm  
