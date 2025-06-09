@@ -14,17 +14,19 @@
     </ContentPage.BindingContext>
     -->
     <ContentPage.Resources>
-    <local:ParameterDisplayValueConverter x:Key="ParameterDisplayValueConverter"/>
-</ContentPage.Resources>
+        <local:ParameterDisplayValueConverter x:Key="ParameterDisplayValueConverter"/>
+    </ContentPage.Resources>
 
     <Grid RowDefinitions="50,*">
 
         <FlexLayout
-            VerticalOptions="Center">
+            VerticalOptions="Center"
+                Wrap="Wrap"
+                Direction="Row">
 
             <Label IsVisible="{OnPlatform Default=false, MacCatalyst=true}"
                    Text="Select Port:"
-                   Padding="2"
+                   Padding="4"
                    HorizontalOptions="Start"
                    VerticalOptions="Center"/>
 
@@ -36,7 +38,7 @@
                        WinUI='Select a port'}"/>
 
             <Label Text="ECU ID:"
-                   Padding="2"
+                   Padding="10"
                    HorizontalOptions="Start"
                    VerticalOptions="Center"/>
             <Label Text="{Binding ECUId}"
@@ -48,16 +50,20 @@
                    VerticalOptions="Center"/>
             <CheckBox x:Name="simulatorCheckBox"
                       CheckedChanged="OnCheckBoxCheckedChanged"/>
-            <Label Text="Diag Codes:"
-                   Padding="2"
-                   HorizontalOptions="Start"
-                   VerticalOptions="Center"/>
-            <Label Text="{Binding DiagCodes}"
-                   HorizontalOptions="Start"
-                   VerticalOptions="Center"/>
+            <HorizontalStackLayout>
+                <Label Text="Diag Codes:"
+                       Padding="10"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+                <Label Text="{Binding DiagCodes}"
+                       Padding="10"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
         </FlexLayout>
-       
-<!--
+
+        <!--
         <dg:DataGrid ItemsSource="{Binding ParameterCollection}"
                      RowHeight="70"
                      HeaderHeight="50"
@@ -104,10 +110,10 @@
                 <syncfusion:DataGridTextColumn HeaderText="Units"
                                                MappingName="Units"/>
                 <syncfusion:DataGridNumericColumn HeaderText="Value"
-                   Format = "0.##"
+                                                  Format="0.##"
                                                   MappingName="DataValue.Value"/>
-            <syncfusion:DataGridTextColumn HeaderText="Raw"
-                                               MappingName="DataValue.Raw"  />
+                <syncfusion:DataGridTextColumn HeaderText="Raw"
+                                               MappingName="DataValue.Raw"/>
                 <syncfusion:DataGridNumericColumn HeaderText="Last Updated"
                                                   MappingName="DataValue.LastUpdated"
                                                   Format="0"/>

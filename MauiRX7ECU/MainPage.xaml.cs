@@ -22,6 +22,8 @@ namespace MauiRX7
             {
                 case "Hex":
                     return "0x" + ((int)(p.DataValue.Value)).ToString("X4");
+                case "Binary":
+                    return "0b" + ((int)(p.DataValue.Value)).ToString("B8");
 
                 default:
                     return p.DataValue.Value.ToString("F2");

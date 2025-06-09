@@ -10,6 +10,12 @@
             "request": "launch",
             "projectPath": "${workspaceFolder}/DumpRX7ECU/DumpRX7ECU.csproj"
         },
+         {
+            "name": "C#: Maui ECU Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/MauiRX7/MauiRX7.csproj"
+        },
 
         {
             "name": ".NET MAUI",
