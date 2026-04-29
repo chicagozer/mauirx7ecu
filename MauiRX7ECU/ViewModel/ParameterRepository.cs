@@ -5,20 +5,7 @@ using System.ComponentModel;
 
 namespace MauiRX7
 {
-    public class ECUID : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler? PropertyChanged;
-        string value = "UNKNOWN";
-        public String Value
-        {
-            get { return value; }
-            set { this.value = value; OnPropertyChanged(nameof(Value)); }
-        }
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
+
     public class ParameterRepository : INotifyPropertyChanged
     {
         private Timer timer;
@@ -41,6 +28,13 @@ namespace MauiRX7
             set { this.ecuId = value; OnPropertyChanged(nameof(ECUId)); }
         }
 
+         private string diagCodes = "";
+        public string DiagCodes
+        {
+            get { return diagCodes; }
+            set { this.diagCodes = value; OnPropertyChanged(nameof(DiagCodes)); }
+        }
+
         private ObservableCollection<Parameter> parameter;
         public ObservableCollection<Parameter> ParameterCollection
         {
@@ -55,12 +49,12 @@ namespace MauiRX7
         {
             parameter = new ObservableCollection<Parameter>();
             this.GenerateParameters();
-              timer = new Timer(TimerCallback, null, 1000, 500);
+            timer = new Timer(TimerCallback, null, 1000, 500);
         }
 
         private void OnEnabledChanged(object? sender, PropertyChangedEventArgs e)
         {
-              Preferences.Default.Set(((Parameter)sender!).Name, ((Parameter)sender!).Enabled);
+            Preferences.Default.Set(((Parameter)sender!).Name, ((Parameter)sender!).Enabled);
             // This code will be executed when a property changes in _myClass
             //Console.WriteLine($"Property '{e.PropertyName}' changed in {_myClass}");
         }
@@ -98,14 +92,15 @@ namespace MauiRX7
             parameter.Add(new Parameter("Unknown 9", "?", new DataValue(0x0812, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Unknown 9", true)));
             parameter.Add(new Parameter("Unknown 10", "?", new DataValue(0x0813, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Unknown 10", true)));
 
-            parameter.Add(new Parameter("Diag 1", "Hex", new DataValue(0x0010, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 1", true)));
-            parameter.Add(new Parameter("Diag 2", "Hex", new DataValue(0x0012, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 2", true)));
-            parameter.Add(new Parameter("Diag 3", "Hex", new DataValue(0x0014, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 3", true)));
-            parameter.Add(new Parameter("Diag 4", "Hex", new DataValue(0x0016, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 4", true)));
-            parameter.Add(new Parameter("Diag 5", "Hex", new DataValue(0x0018, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 5", true)));
-            parameter.Add(new Parameter("Diag 6", "Hex", new DataValue(0x001a, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 6", true)));
-            parameter.Add(new Parameter("Diag 7", "Hex", new DataValue(0x001c, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 7", true)));
-            parameter.Add(new Parameter("Diag 8", "Hex", new DataValue(0x001e, ParameterLength.TwoBytes, 1, 0), null, Preferences.Default.Get("Diag 8", true)));
+            
+            parameter.Add(new Parameter("Diag 01", "Binary", new DataValue(0x0101, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 1", true)));
+            parameter.Add(new Parameter("Diag 02", "Binary", new DataValue(0x0103, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 2", true)));
+            parameter.Add(new Parameter("Diag 03", "Binary", new DataValue(0x0105, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 3", true)));
+            parameter.Add(new Parameter("Diag 04", "Binary", new DataValue(0x0107, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 4", true)));
+            parameter.Add(new Parameter("Diag 05", "Binary", new DataValue(0x0109, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 5", true)));
+            parameter.Add(new Parameter("Diag 06", "Binary", new DataValue(0x010b, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 6", true)));
+            parameter.Add(new Parameter("Diag 07", "Binary", new DataValue(0x010d, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 7", true)));
+            parameter.Add(new Parameter("Diag 08", "Binary", new DataValue(0x010f, ParameterLength.OneByte, 1, 0), null, Preferences.Default.Get("Diag 8", true)));
 
             foreach (Parameter p in parameter)
             {

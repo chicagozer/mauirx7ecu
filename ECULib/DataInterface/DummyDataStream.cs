@@ -37,14 +37,27 @@ namespace RX7Interface
         {
             return ReadByte(address, 1);
         }
-        
-         public byte[] DumpBytes(uint address, byte length)
+
+        public byte[] DumpBytes(uint address, byte length)
         {
             return DumpBytes(address, length, 1);
         }
 
         public byte[] DumpBytes(uint address, byte length, int retryCount)
         {
+            if (address == 0x0100 && length == 16)
+            {
+                // Simulate a diagnostic data response.
+                //  5A 20 DF F0 0F C0 3F 10 EF FF 00 FE 01 E2 1D C0
+                return new byte[]
+                {
+                    0x5A, 0x20, 0xDF, 0xF0, 0x0F, 0xC0, 0x3F, 0x10,
+                    0xEF, 0xFF, 0x00, 0xFE, 0x01, 0xE2, 0x1D, 0xC0
+                };
+            }
+
+
+
             byte[] randomBytes = new byte[length];
             Random random = new Random();
             random.NextBytes(randomBytes);
@@ -53,7 +66,7 @@ namespace RX7Interface
 
         }
 
-        
+
         public string ReadECUId()
         {
             return "N3A1-MPA";

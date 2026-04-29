@@ -110,6 +110,7 @@ namespace RX7Interface
         private void OnTimedEvent(Object? source, ElapsedEventArgs e)
         {
             serialPort.DtrEnable = !serialPort.DtrEnable;
+            serialPort.RtsEnable = !serialPort.RtsEnable;
         }
 
         private void StartMultimediaTimer()
